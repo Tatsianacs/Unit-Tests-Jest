@@ -1,10 +1,9 @@
-import AppModel from '../js/AppModel';
+import AppModel from './AppModel';
 import 'isomorphic-fetch';
 
 test('API returns object', () => {
-  let appM = new AppModel();
-  //const chunkSignature = API.getChunkSignature('something');
-  expect(typeof (appM)).toBe('object');
+  const testModel = new AppModel();
+  expect(typeof (testModel)).toBe('object');
 });
 
 // test('API module sends data back only after completing fetch()', async () => {
@@ -32,9 +31,11 @@ test('API returns object', () => {
 //   */
 //
 // // returning undef is ok here
-// test('getChunkSignature returns undefined without requesting data from youtube api', async () => {
+// test('getChunkSignature returns undefined without
+// requesting data from youtube api', async () => {
 //   expect(await API.getChunkSignature()).toEqual(undefined);
 // });
-// test('getChunkItems returns undefined without requesting data from youtube api', async () => {
+// test('getChunkItems returns undefined without requesting
+// data from youtube api', async () => {
 //   expect(await API.getChunkItems()).toEqual(undefined);
 // });

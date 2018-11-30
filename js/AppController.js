@@ -43,7 +43,10 @@ export default class AppController {
     if (inputData.length !== 0) {
       AppView.addLoader();
       const queryPart = `&q=${inputData}`;
-      this.calculateSize();
+      const windowWidth = window.innerWidth
+        || document.body.offsetWidth
+        || document.body.clientWidth;
+      this.calculateSize(windowWidth);
       this.clear();
       this.model.search(queryPart, (data, arrayStat) => {
         this.view.drawVideos(data, arrayStat);
@@ -65,10 +68,7 @@ export default class AppController {
     evt.stopPropagation();
   }
 
-  calculateSize() {
-    const windowWidth = window.innerWidth
-      || document.body.offsetWidth
-      || document.body.clientWidth;
+  calculateSize(windowWidth) {
     if (windowWidth >= 1600) {
       this.numOfBlocks = 4;
     } else if (windowWidth < 1600 && windowWidth >= 1200) {
@@ -207,7 +207,10 @@ export default class AppController {
   actualResizeHandler() {
     const previousSize = this.numOfBlocks;
     const previousNumberOfResults = this.currentPage * previousSize;
-    this.calculateSize();
+    const windowWidth = window.innerWidth
+      || document.body.offsetWidth
+      || document.body.clientWidth;
+    this.calculateSize(windowWidth);
     const newSizeOfBlocks = this.numOfBlocks;
     this.currentPage = Math.ceil(previousNumberOfResults / newSizeOfBlocks);
     if (previousNumberOfResults % newSizeOfBlocks === 0) {

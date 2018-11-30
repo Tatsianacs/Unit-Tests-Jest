@@ -1,7 +1,7 @@
-import AppController from '../js/AppController';
-import AppView from '../js/AppView';
-import AppModel from '../js/AppModel';
-import App from '../js/App';
+import AppController from './AppController';
+import AppView from './AppView';
+import AppModel from './AppModel';
+import App from './App';
 
 jest.mock('../js/AppView');
 jest.mock('../js/AppModel');
@@ -14,15 +14,15 @@ beforeEach(() => {
   AppController.mockClear();
 });
 
-
-it('check if the consumer called the required class constructors', () => {
+test('check if the consumer called the required class constructors', () => {
   const app = new App();
+  app.start();
   expect(AppView).toHaveBeenCalledTimes(1);
   expect(AppModel).toHaveBeenCalledTimes(1);
   expect(AppController).toHaveBeenCalledTimes(1);
 });
 
-it('check if the consumer called a method on the class instance', () => {
+test('check if the consumer called a method on the class instance', () => {
   // Show that mockClear() is working:
   expect(AppController).not.toHaveBeenCalled();
 

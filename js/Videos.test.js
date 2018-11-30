@@ -1,31 +1,42 @@
-// add for API and number of clocks count
-
 import Videos from './Videos';
 
 const idx = {
-  id: { videoId: 'TESTID' },
+  id: { videoId: 'nq4aU9gmZQk' },
   snippet: {
-    publishedAt:"2015-10-13T23:00:01.000Z",
-    channelTitle: "TEstTtitle",
-    description: "tastiana",
-    title: 'Testtitle',
+    publishedAt: '2015-10-13T23:00:01.000Z',
+    channelTitle: 'Rolling Scopes',
+    description: 'Rolling Scopes youtube search client',
+    title: 'Youtube search client is the best app forever',
     thumbnails: {
       high: {
-        url: '//src',
+        url: 'https://i.ytimg.com/vi/nq4aU9gmZQk/default.jpg',
       },
     },
   },
 };
-const videoCount = 10;
+const videoCount = 91238;
 
-describe('Draw Video', () => {
-  it('.draw should wrap template with tag section.navitation', () => {
-    // prepare - Arrange
-    document.body.innerHTML = '<div id="video_container"><div class="videos"></div></div>';
-    // action  - Act
-    Videos.draw(idx, videoCount);
+beforeAll(() => {
+  document.body.innerHTML = '<div id="video_container"><div class="videos"></div></div>';
+  Videos.draw(idx, videoCount);
+});
+
+describe('Draw Video Clip and check that information is inserted properly', () => {
+  it('.draw should add author to video container', () => {
     const authorOfClip = document.querySelector('.author');
-    // check - Assert
     expect(authorOfClip).not.toBe(null);
+  });
+  it('.draw should add description', () => {
+    const description = document.querySelector('.description');
+    expect(description).not.toBe(null);
+  });
+  it('.draw should contain proper title', () => {
+    const title = document.querySelector('.video-title').textContent;
+    expect(title).toBe(idx.snippet.title);
+  });
+  it('.draw should contain counter', () => {
+    const counter = document.querySelector('.rate');
+    const valueForCounter = counter.textContent.includes(videoCount);
+    expect(valueForCounter).toBeTruthy();
   });
 });
