@@ -1,0 +1,388 @@
+body {
+  background: #C4DFE6;
+}
+
+/*Styles for video container*/
+.video-container {
+  position: relative;
+}
+
+.video-item {
+  width: 300px;
+  margin: 30px 50px;
+  height: 600px;
+  background-color: #ffffff;
+  box-sizing: border-box;
+  text-align: center;
+  flex-shrink: 0;
+  box-shadow: 10px 10px 10px #66A5AD;
+  transition: all .2s ease-in-out;
+}
+
+.no-touch .video-item:hover {
+  transform: scale(1.03);
+}
+
+.no-touch .btn:hover {
+  color: #f6af54;
+}
+
+.video-item span, .video-title {
+  padding: 10px;
+}
+
+.video-item a {
+  color: #66A5AD;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-weight: 700;
+  display:inline-block;
+}
+
+.video-container h2 {
+  text-align: center;
+  word-wrap: break-word;
+}
+
+.video-container span {
+  display: block;
+  text-align: center;
+  word-wrap: break-word;
+}
+
+.videos {
+  transition: margin-left 0.3s;
+  display: flex;
+}
+
+.gallery {
+  overflow: hidden;
+  margin: 30px auto 0;
+  text-align: center;
+}
+
+img {
+  display: block;
+  margin: 0 auto 20px;
+}
+
+.clip-preview {
+  width: 100%;
+}
+
+.text-no-results {
+  color: white;
+}
+
+/*Styles for search box*/
+.search-container {
+  text-align: center;
+}
+
+.search-box {
+  width: 50%;
+  padding: 16px;
+  font-size: 21px;
+  border: 2px solid #cccccc;
+  border-right: none;
+  border-radius: 5px 0 0 5px;
+  outline: none;
+}
+
+.search-box:focus {
+  border: 2px solid #f6af54;
+  border-right: none;
+}
+
+.search-box::placeholder {
+  color: #f6af54;
+}
+
+.search-container button {
+  padding: 19px;
+  background-color: #f6af54;
+  font-size: 21px;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 0 5px 5px 0;
+  transition: background-color 0.5s;
+  outline: none;
+}
+
+.search-container button:hover {
+  background-color: #f39824;
+}
+
+/*Pagination*/
+.pagination-wrapper {
+  font-size: 0;
+  position: absolute;
+  top: 110%;
+  left: 50%;
+  text-align: center;
+}
+
+@keyframes pagination-container--animation-prev {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(18px);
+  }
+}
+
+@keyframes pagination-container--animation-next {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-18px);
+  }
+}
+
+.transition-prev .pagination-container {
+  animation: pagination-container--animation-prev 0.3s forwards;
+}
+
+.transition-next .pagination-container {
+  animation: pagination-container--animation-next 0.3s forwards;
+}
+
+.little-dot {
+  width: 6px;
+  height: 6px;
+  background: #fff;
+  border-radius: 100%;
+  display: inline-block;
+  vertical-align: middle;
+  margin: 0 6px;
+  position: relative;
+  z-index: 10;
+}
+
+.little-dot--first,
+.little-dot--last {
+  z-index: 5;
+}
+
+@keyframes slideLeft {
+  0% {
+    transform: translateX(0px);
+  }
+
+  100% {
+    transform: translateX(-18px);
+  }
+}
+
+.transition-prev .little-dot--first {
+  animation: slideLeft 0.4s 0.3s forwards cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+@keyframes little-dot--first--animation {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.transition-next .little-dot--first {
+  animation: little-dot--last--animation 0.3s forwards;
+}
+
+@keyframes little-dot--last--animation {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.transition-prev .little-dot--last {
+  animation: little-dot--last--animation 0.3s forwards;
+}
+
+@keyframes slideRight {
+  0% {
+    transform: translateX(0px);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateX(18px);
+    opacity: 1;
+  }
+}
+
+.transition-next .little-dot--last {
+  animation: slideRight 0.4s 0.3s forwards cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.big-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 100%;
+  background: #f6af54;
+  position: absolute;
+  top: 50%;
+  right: -6px;
+  transform: translateY(-50%);
+}
+
+.transition-next .big-dot {
+  right: auto;
+  left: -6px;
+}
+
+.big-dot-container {
+  width: 18px;
+  height: 18px;
+  border-radius: 100%;
+  position: absolute;
+  top: 50%;
+  right: 3px;
+  transform: translateY(-50%);
+  z-index: 10;
+}
+
+.transition-next .big-dot-container {
+  right: auto;
+  left: 3px;
+}
+
+@keyframes big-dot-container--animation-prev {
+  0% {
+    transform: translateY(-50%);
+  }
+  100% {
+    transform: translateY(-50%) rotate(-179deg);
+  }
+}
+
+@keyframes big-dot-container--animation-next {
+  0% {
+    transform: translateY(-50%);
+  }
+  100% {
+    transform: translateY(-50%) rotate(-181deg);
+  }
+}
+
+.transition-prev .big-dot-container {
+  animation: big-dot-container--animation-prev 0.3s forwards;
+}
+
+.transition-next .big-dot-container {
+  animation: big-dot-container--animation-next 0.3s forwards;
+}
+
+.btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  fill: #fff;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.btn--next {
+  left: calc(100% + 20px);
+}
+
+.btn--prev {
+  right: calc(100% + 20px);
+}
+
+.disabled {
+  visibility: hidden;
+}
+
+/*Fontawesome*/
+.fa.fa-spin {
+  font-size: 50px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: cadetblue;
+}
+
+.pagination .fa {
+  cursor: pointer;
+
+}
+
+.fa-circle-o {
+  font-size: 30px;
+  padding-left: 5px;
+}
+
+.fa-circle {
+  color: #67b735;
+}
+
+.fa-chevron-left, .fa-chevron-right {
+  font-size: 60px;
+  cursor: pointer;
+  color: white;
+}
+
+.fa-user, .fa-youtube, .fa-calendar, .fa-eye {
+  color: #f6af54;
+  font-size: 23px;
+  padding-right: 10px;
+}
+/*Tooltip*/
+.tooltiptext {
+  visibility: hidden;
+  width: 200px;
+  background-color: #f6af54;
+  color: #ffffff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  margin-left: -100px;
+  opacity: 0;
+  transition: opacity 0.3s;
+  font-size: 26px;
+  user-select: none;
+}
+
+.tooltiptext.visible {
+  visibility: visible;
+  opacity: 1;
+}
+
+.tooltiptext::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #f39824 transparent transparent transparent;
+}
+
+.youtube-logo img {
+  width: 150px;
+  height: 35px;
+  float: left;
+}
+
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: #e7f2f5;
+  color: #626f73;
+  text-align: center;
+}
